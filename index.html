@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Darts Score Tracker</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header id="topbar">
+  <h1>🎯 Darts</h1>
+  <div class="top-actions">
+    <button id="btnStats" class="btn small">Stats</button>
+    <button id="btnFullscreenTop" class="btn small">Full screen</button>
+  </div>
+</header>
+
+<main>
+  <!-- LOBBY -->
+  <section id="lobby" class="view">
+    <h2>Pick a game</h2>
+    <div id="gameGrid" class="game-grid"></div>
+    <p id="gameDesc" class="game-desc"></p>
+
+    <h2>Players</h2>
+    <div class="row wrap">
+      <label>How many?
+        <select id="playerCount">
+          <option value="1">1</option><option value="2" selected>2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+          <option value="7">7</option><option value="8">8</option>
+        </select>
+      </label>
+      <label id="legsWrap">Legs (first to)
+        <select id="legsSelect">
+          <option value="1" selected>1</option><option value="2">2</option>
+          <option value="3">3</option><option value="5">5</option>
+        </select>
+      </label>
+    </div>
+    <div id="nameInputs" class="name-inputs"></div>
+
+    <button id="btnStart" class="btn big primary">Start game</button>
+    <button id="btnResume" class="btn big" hidden>Resume saved game</button>
+
+    <h2>Results &amp; stats</h2>
+    <div id="statsBox" class="stats-box"><p class="muted">No games played yet on this device.</p></div>
+    <button id="btnClearStats" class="btn small danger">Clear stats</button>
+  </section>
+
+  <!-- GAME -->
+  <section id="gameView" class="view" hidden>
+    <div id="scoreboard" class="scoreboard"></div>
+    <div id="turnInfo" class="turn-info"></div>
+    <div id="hint" class="hint"></div>
+
+    <div id="boardWrap" class="board-wrap">
+      <div id="fsScore" class="fs-score" hidden></div>
+      <svg id="board" viewBox="0 0 440 440" aria-label="Dartboard - tap where your dart landed"></svg>
+      <div id="fsControls" class="fs-controls" hidden>
+        <button id="btnMissFs" class="btn">Miss</button>
+        <button id="btnUndoFs" class="btn">Undo</button>
+        <button id="btnExitFs" class="btn">Exit full screen</button>
+      </div>
+    </div>
+
+    <div id="extraPanel" class="extra-panel"></div>
+
+    <div class="controls">
+      <button id="btnMiss" class="btn">Miss</button>
+      <button id="btnUndo" class="btn">Undo</button>
+      <button id="btnFullscreen" class="btn">Full screen</button>
+      <button id="btnQuit" class="btn danger">End game</button>
+    </div>
+    <div class="typed-row">
+      <input id="typedInput" type="text" placeholder="Type a dart: T20, D16, 20, 25, Bull, Miss" autocomplete="off">
+      <button id="btnTyped" class="btn">Enter dart</button>
+    </div>
+    <p class="muted small">Tap the board where your dart landed. Taps near a thin ring snap to it. Taps off the board count as a miss.</p>
+  </section>
+
+  <!-- WINNER -->
+  <div id="winnerOverlay" class="overlay" hidden>
+    <div class="overlay-card">
+      <h2 id="winnerText">Winner!</h2>
+      <p id="winnerDetail" class="muted"></p>
+      <button id="btnRematch" class="btn big primary">Rematch</button>
+      <button id="btnNewGame" class="btn big">New game</button>
+    </div>
+  </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
